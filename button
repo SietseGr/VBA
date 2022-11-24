@@ -1,0 +1,116 @@
+Private Sub CommandButton1_Click()
+
+Set WSheet = Application.Worksheets("Export")
+
+Dim i As Integer
+
+    nfile = FreeFile
+    basedirectory = WSheet.Cells(1, 2)
+    xmlnaam = basedirectory & "\" & WSheet.Cells(2, 2) & ".xml"
+    MsgBox (xmlnaam)
+           
+   Set objFSO = CreateObject("Scripting.FileSystemObject")
+   Open (xmlnaam) For Output As #nfile
+    'HEADER XML'
+    Print #nfile, ("<Dataset>")
+   For cell = 6 To 242 'Start vanaf rij 4 en eindig op rij 242
+    '   If Trim(WSheet.Cells(cell, 2)) <> "" Then
+    
+    '    Print #nfile, ("<PRDH>")
+    '   Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 3) & "</PRDH.PRDH_dat_planning>")
+    '   Print #nfile, (" <PRDR>")
+    '    Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+    '    Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 2) & "</prdr_prod_aantal>")
+    '    Print #nfile, (" </PRDR>")
+    '   Print #nfile, ("</PRDH>")
+    If Trim(WSheet.Cells(cell, 4)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 5) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 4) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+    
+    If Trim(WSheet.Cells(cell, 6)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 7) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 6) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+
+'    End If
+    Next
+   
+    Set WSheet = Application.Worksheets("grote onderdelen")
+    For cell = 5 To 100 'Start vanaf rij 5 en eindig op rij 100
+    
+    'productieorders grote onderdelen periode 2
+    If Trim(WSheet.Cells(cell, 48)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 48) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 43) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+    
+    If Trim(WSheet.Cells(cell, 49)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 49) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 44) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+    
+    If Trim(WSheet.Cells(cell, 50)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 50) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 45) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+    
+    'productieorders grote onderdelen periode 3
+    If Trim(WSheet.Cells(cell, 58)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 58) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 53) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+    
+    If Trim(WSheet.Cells(cell, 59)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 59) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 54) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+    
+    If Trim(WSheet.Cells(cell, 60)) <> "" Then
+        Print #nfile, ("<PRDH>")
+        Print #nfile, ("<PRDH.PRDH_dat_planning>" & WSheet.Cells(cell, 60) & "</PRDH.PRDH_dat_planning>")
+        Print #nfile, (" <PRDR>")
+        Print #nfile, ("  <Arti_code>" & WSheet.Cells(cell, 1) & "</Arti_code>")
+        Print #nfile, ("  <prdr_prod_aantal>" & WSheet.Cells(cell, 55) & "</prdr_prod_aantal>")
+        Print #nfile, (" </PRDR>")
+        Print #nfile, ("</PRDH>")
+    End If
+Next
+Print #nfile, ("</Dataset>")
+End Sub
+
